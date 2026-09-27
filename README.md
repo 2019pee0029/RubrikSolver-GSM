@@ -21,6 +21,9 @@ RubrikSolver-GSM/
 ├── README.md
 ├── pyproject.toml
 ├── .gitignore
+├── app.js
+├── index.html
+├── style.css
 ├── docs/
 │   ├── algorithm.md
 │   └── usage.md
@@ -49,6 +52,16 @@ All GSM Rubik tests passed.
 python -m pytest
 ```
 
+## Interactive 3D viewer
+
+Start the local web server from the project root:
+
+```bash
+python -m http.server 8000
+```
+
+Then open <http://localhost:8000>. The viewer controls and move notation are documented in [docs/usage.md](docs/usage.md).
+
 ## Example usage
 
 ```python
@@ -74,6 +87,7 @@ This repository currently provides:
 - face move logic
 - state validation
 - built-in self-tests
+- an interactive browser-based 3D cube viewer
 
 The next step would be implementing a solver that searches for and returns a move sequence from a scrambled cube to solved state.
 

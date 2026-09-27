@@ -16,6 +16,20 @@ This runs the built-in self-tests and prints:
 All GSM Rubik tests passed.
 ```
 
+## Interactive 3D viewer
+
+From the project root, start Python's local static web server:
+
+```bash
+python -m http.server 8000
+```
+
+Open <http://localhost:8000> in a browser. Leave the server running while using the viewer; stop it with `Ctrl+C` in the terminal.
+
+The viewer provides clockwise quarter-turn buttons `U`, `D`, `L`, `R`, `F`, and `B`, plus counterclockwise buttons marked with a prime, such as `U'` and `R'`. A prime move is the inverse quarter turn. Move clicks animate and queue in order. Drag the cube to orbit the view, and use **Reset** to return to the solved cube and default view.
+
+The browser viewer currently maintains its cube state in JavaScript and runs separately from the Python GSM engine. The Python engine's move notation additionally supports half turns such as `U2`.
+
 ## Example script usage
 
 ```python
