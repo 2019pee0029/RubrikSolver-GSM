@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "rubrik-solver-gsm"
 version = "0.1.0"
-description = "A Python Rubik's Cube Group-State Matrix engine and solver scaffold"
+description = "A Python Rubik's Cube Group-State Matrix engine and native two-phase solver"
 readme = "README.md"
 requires-python = ">=3.10"
 authors = [{ name = "AIJAZ" }]
@@ -13,4 +13,4 @@ license = { text = "MIT" }
 keywords = ["rubiks-cube", "gsm", "algorithm", "python"]
 
 [tool.setuptools]
-py-modules = ["main"]
+py-modules = ["main", "solver", "web_server"]

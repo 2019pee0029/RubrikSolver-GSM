@@ -28,8 +28,8 @@ body {
 }
 
 .app-shell {
-  width: min(1100px, 94vw);
-  min-height: min(820px, 92vh);
+  width: min(1380px, 96vw);
+  min-height: min(900px, 96vh);
   display: flex;
   flex-direction: column;
   gap: 18px;
@@ -47,6 +47,14 @@ body {
   gap: 10px;
   align-items: center;
   justify-content: center;
+}
+
+.viewer-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 310px;
+  gap: 20px;
+  flex: 1;
+  min-height: 520px;
 }
 
 button {
@@ -68,6 +76,18 @@ button:hover {
   border-color: rgba(96, 165, 250, 0.7);
 }
 
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+  transform: none;
+}
+
+button:disabled {
+  cursor: wait;
+  opacity: 0.65;
+  transform: none;
+}
+
 #cubeContainer {
   position: relative;
   width: 100%;
@@ -80,6 +100,102 @@ button:hover {
   perspective: 1400px;
   touch-action: none;
   cursor: grab;
+}
+
+.solver-panel {
+  display: flex;
+  min-width: 0;
+  max-height: 520px;
+  flex-direction: column;
+  gap: 12px;
+  overflow-y: auto;
+  padding-left: 20px;
+  border-left: 1px solid var(--panel-border);
+}
+
+.solver-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.solver-heading h1 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+#solutionCount {
+  color: #aab5c5;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+#solverStatus {
+  min-height: 2.5em;
+  margin: 0;
+  color: #cbd5e1;
+  line-height: 1.45;
+}
+
+.solver-primary {
+  width: 100%;
+  background: #147d75;
+  border-color: #21a394;
+}
+
+.solver-primary:hover {
+  background: #159084;
+}
+
+.solution-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.solution-actions button {
+  padding-inline: 8px;
+}
+
+.solution-steps {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 4px;
+  max-height: 230px;
+  overflow-y: auto;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.solution-step {
+  padding: 5px 3px;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+  color: #e2e8f0;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.solution-step[aria-current="step"] {
+  border-color: #29c4ae;
+  background: rgba(20, 125, 117, 0.24);
+  color: #7ce5d4;
+}
+
+.solution-step.is-complete {
+  color: #8da19f;
+}
+
+.solution-steps.is-stale .solution-step {
+  opacity: 0.55;
+}
+
+.solver-note {
+  margin: auto 0 0;
+  color: #9ba8b8;
+  font-size: 0.82rem;
+  line-height: 1.4;
 }
 
 #cubeContainer:active {
@@ -136,3 +252,20 @@ button:hover {
 .left   { transform: rotateY(-90deg) translateZ(calc(var(--cube-size) / 2)); background: #f97316; }
 .top    { transform: rotateX(90deg) translateZ(calc(var(--cube-size) / 2)); background: #f8fafc; }
 .bottom { transform: rotateX(-90deg) translateZ(calc(var(--cube-size) / 2)); background: #facc15; }
+
+@media (max-width: 900px) {
+  .viewer-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .solver-panel {
+    max-height: none;
+    padding: 18px 0 0;
+    border-top: 1px solid var(--panel-border);
+    border-left: 0;
+  }
+
+  #solutionSteps {
+    max-height: 180px;
+  }
+}

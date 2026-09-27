@@ -11,7 +11,7 @@ This project defines a legal cube state using:
 - face-turn transformations based on cube-group algebra
 - validation for physical cube legality
 
-The code is intentionally focused on the mathematical model of the cube and the correctness of move operations before moving into a full solver.
+The Python code provides the GSM cube model and an in-repository two-phase solver. The browser viewer uses that solver through a local API.
 
 ## Project structure
 
@@ -23,12 +23,16 @@ RubrikSolver-GSM/
 ├── .gitignore
 ├── app.js
 ├── index.html
+├── solver.py
 ├── style.css
+├── web_server.py
 ├── docs/
 │   ├── algorithm.md
+│   ├── solver.md
 │   └── usage.md
 ├── tests/
-│   └── test_gsm.py
+│   ├── test_gsm.py
+│   └── test_solver.py
 └── __pycache__/
 ```
 
@@ -54,13 +58,13 @@ python -m pytest
 
 ## Interactive 3D viewer
 
-Start the local web server from the project root:
+Start the local viewer and solver server from the project root:
 
 ```bash
-python -m http.server 8000
+python web_server.py
 ```
 
-Then open <http://localhost:8000>. The viewer controls and move notation are documented in [docs/usage.md](docs/usage.md).
+Then open <http://localhost:8000>. The viewer controls and solver details are documented in [docs/usage.md](docs/usage.md).
 
 ## Example usage
 
@@ -77,6 +81,7 @@ print(is_solved(scrambled))
 ## Documentation
 
 - [docs/algorithm.md](docs/algorithm.md)
+- [docs/solver.md](docs/solver.md)
 - [docs/usage.md](docs/usage.md)
 
 ## Current status
@@ -87,9 +92,9 @@ This repository currently provides:
 - face move logic
 - state validation
 - built-in self-tests
-- an interactive browser-based 3D cube viewer
+- an interactive browser-based 3D viewer with random scrambles and a step-by-step native two-phase solution panel
 
-The next step would be implementing a solver that searches for and returns a move sequence from a scrambled cube to solved state.
+The native two-phase solver searches for up to three seconds for a short improvement. If it cannot improve the sequence within that budget, it returns a verified simplified inverse of the move history. Its improved solutions are near-optimal, not guaranteed globally shortest.
 
 ## Notes
 

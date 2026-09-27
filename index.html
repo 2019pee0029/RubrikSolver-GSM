@@ -21,13 +21,31 @@
         <button data-move="R'">R'</button>
         <button data-move="F'">F'</button>
         <button data-move="B'">B'</button>
+        <button id="scrambleBtn" type="button" aria-label="Generate a 30-move random scramble">Scramble</button>
         <button id="resetBtn">Reset</button>
       </div>
 
-      <div id="cubeContainer">
-        <div class="scene" id="scene">
-          <div class="cube" id="cube"></div>
+      <div class="viewer-layout">
+        <div id="cubeContainer">
+          <div class="scene" id="scene">
+            <div class="cube" id="cube"></div>
+          </div>
         </div>
+
+        <aside class="solver-panel" aria-labelledby="solverTitle">
+          <div class="solver-heading">
+            <h1 id="solverTitle">Solution</h1>
+            <span id="solutionCount">0 moves</span>
+          </div>
+          <p id="solverStatus" role="status" aria-live="polite">Scramble the cube, then find a solution.</p>
+          <button id="solveBtn" class="solver-primary" type="button">Find solution</button>
+          <div class="solution-actions">
+            <button id="nextStepBtn" type="button" disabled>Next move</button>
+            <button id="playSolutionBtn" type="button" disabled>Play all</button>
+          </div>
+          <ol id="solutionSteps" class="solution-steps" aria-label="Solution moves"></ol>
+          <p class="solver-note">Native GSM two-phase solver: short solutions, not guaranteed globally shortest.</p>
+        </aside>
       </div>
     </div>
 

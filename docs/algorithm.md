@@ -33,4 +33,4 @@ This representation is useful because it preserves the underlying algebra of the
 
 ## Current scope
 
-The current project focuses on a reliable cube engine and validation layer. It does not yet include search-based solving or a Kociemba-style pruning strategy.
+The Python cube engine and validation layer are used by the in-repository two-phase solver. The solver's coordinates, pruning tables, cache, search deadline, API fallback, and limitations are documented in [solver.md](solver.md).
